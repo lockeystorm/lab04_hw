@@ -37,17 +37,17 @@ $ git push --force origin master
 $ touch CMakeList.txt
 $ vim CMakeLists.txt
 $ cat CMakeLists.txt
-  cmake\_minimum_required(VERSION 3.30)
+  cmake_minimum_required(VERSION 3.30)
   project(formatter)
   
-  set(CMAKE\_CXX_STANDARD 11)
-  set(CMAKE\_CXX_STANDARD_REQUIRED ON)
+  set(CMAKE_CXX_STANDARD 11)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
   
   set(LIB_SOURCE formatter.h formatter.cpp)
   
-  add\_library(formatter STATIC ${LIB_SOURCE})
+  add_library(formatter STATIC ${LIB_SOURCE})
   
-  target\_include\_directories(formatter PUBLIC "${CMAKE\_CURRENT\_SOURCE_DIR}")
+  target_include_directories(formatter PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 ```
 
 ```
@@ -66,7 +66,7 @@ $ cmake -B build
   -- Detecting CXX compile features - done
   -- Configuring done (0.7s)
   -- Generating done (0.0s)
-  -- Build files have been written to: /home/storm/lockeystorm/workspace/tasks/lab03\_hw/formatter_lib/build
+  -- Build files have been written to: /home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_lib/build
 ```
 
 ```
