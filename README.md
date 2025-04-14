@@ -136,3 +136,140 @@ $ cmake --build build
 * *hello_world*, которое использует библиотеку *formatter_ex*;
 * *solver*, приложение которое испольует статические библиотеки *formatter_ex* и *solver_lib*.
 
+```
+$ cd hello_world_application
+$ touch CMakeLists.txt
+$ vim CMakeLists.txt
+$ cat CMakeLists.txt
+cmake_minimum_required(VERSION 3.30)
+project(hello_world)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_subdirectory(../formatter_ex_lib formatter_ex)
+
+add_executable(hello_world hello_world.cpp)
+
+target_link_libraries(hello_world formatter_ex)
+```
+
+```
+$ cmake -B build
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/storm/lockeystorm/workspace/tasks/lab03_hw/hello_world_application/build
+$ cmake --build build
+[ 16%] Building CXX object formatter_ex/formatter/CMakeFiles/formatter.dir/formatter.cpp.o
+[ 33%] Linking CXX static library libformatter.a
+[ 33%] Built target formatter
+[ 50%] Building CXX object formatter_ex/CMakeFiles/formatter_ex.dir/formatter_ex.cpp.o
+[ 66%] Linking CXX static library libformatter_ex.a
+[ 66%] Built target formatter_ex
+[ 83%] Building CXX object CMakeFiles/hello_world.dir/hello_world.cpp.o
+[100%] Linking CXX executable hello_world
+[100%] Built target hello_world
+```
+
+```
+$ cd ../solver_lib
+$ touch CMakeLists.txt && vim CMakeLists.txt
+$ cat CMakeLists.txt
+cmake_minimum_required(VERSION 3.30)
+project(solver)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_library(solver STATIC solver.h solver.cpp)
+
+target_include_directories(solver PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+```
+
+```
+$ cmake -B build
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/storm/lockeystorm/workspace/tasks/lab03_hw/solver_lib/build
+
+$ cmake --build build
+[ 50%] Building CXX object CMakeFiles/solver.dir/solver.cpp.o
+[100%] Linking CXX static library libsolver.a
+[100%] Built target solver
+```
+
+```
+$ cd ../solver_application
+$ touch CMakeLists.txt && vim CMakeLists.txt
+$ cat CMakeLists.txt
+cmake_minimum_required(VERSION 3.30)
+project(equation)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_subdirectory(../formatter_ex_lib formatter_ex)
+add_subdirectory(../solver_lib solver)
+
+add_executable(equation equation.cpp)
+
+target_link_libraries(equation formatter_ex solver)
+```
+
+```
+$ cmake -B build
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/storm/lockeystorm/workspace/tasks/lab03_hw/solver_application/build
+$ cmake --build build
+[ 12%] Building CXX object solver/CMakeFiles/solver.dir/solver.cpp.o
+[ 25%] Linking CXX static library libsolver.a
+[ 25%] Built target solver
+[ 37%] Building CXX object formatter_ex/formatter/CMakeFiles/formatter.dir/formatter.cpp.o
+[ 50%] Linking CXX static library libformatter.a
+[ 50%] Built target formatter
+[ 62%] Building CXX object formatter_ex/CMakeFiles/formatter_ex.dir/formatter_ex.cpp.o
+[ 75%] Linking CXX static library libformatter_ex.a
+[ 75%] Built target formatter_ex
+[ 87%] Building CXX object CMakeFiles/equation.dir/equation.cpp.o
+[100%] Linking CXX executable equation
+[100%] Built target equation
+```
+
+
