@@ -83,6 +83,52 @@ $ cmake --build build
 руководитель поручает заняться созданием `CMakeList.txt` для библиотеки 
 *formatter_ex*, которая в свою очередь использует библиотеку *formatter*.
 
+```
+$ cd formatter_ex_lib
+$ touch CMakeLists.txt
+$ vim CMakeLists.txt
+$ cat CMakeLists.txt
+cmake_minimum_required(VERSION 3.30)
+project(formatter_ex)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_subdirectory(../formatter_lib formatter)
+
+add_library(formatter_ex STATIC formatter_ex.cpp formatter_ex.h)
+
+target_include_directories(formatter_ex PUBLIC ../formatter_lib ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_link_libraries(formatter_ex PUBLIC formatter)
+```
+
+```
+$ cmake -B build
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.9s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_ex_lib/build
+$ cmake --build build
+[ 25%] Building CXX object formatter/CMakeFiles/formatter.dir/formatter.cpp.o
+[ 50%] Linking CXX static library libformatter.a
+[ 50%] Built target formatter
+[ 75%] Building CXX object CMakeFiles/formatter_ex.dir/formatter_ex.cpp.o
+[100%] Linking CXX static library libformatter_ex.a
+[100%] Built target formatter_ex
+```
+
 ### Задание 3
 Конечно же ваша компания предоставляет примеры использования своих библиотек.
 Чтобы продемонстрировать как работать с библиотекой *formatter_ex*,
