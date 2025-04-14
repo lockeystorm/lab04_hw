@@ -1,0 +1,6 @@
+/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_ex_lib/build/CMakeFiles/formatter_ex.dir
+/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_ex_lib/build/CMakeFiles/edit_cache.dir
+/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_ex_lib/build/CMakeFiles/rebuild_cache.dir
+/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_ex_lib/build/formatter/CMakeFiles/formatter.dir
+/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_ex_lib/build/formatter/CMakeFiles/edit_cache.dir
+/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_ex_lib/build/formatter/CMakeFiles/rebuild_cache.dir
