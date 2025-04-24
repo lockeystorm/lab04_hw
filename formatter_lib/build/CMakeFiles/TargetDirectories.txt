@@ -1,3 +1,0 @@
-/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_lib/build/CMakeFiles/formatter.dir
-/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_lib/build/CMakeFiles/edit_cache.dir
-/home/storm/lockeystorm/workspace/tasks/lab03_hw/formatter_lib/build/CMakeFiles/rebuild_cache.dir
