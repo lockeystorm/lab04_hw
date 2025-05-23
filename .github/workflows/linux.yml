@@ -13,5 +13,6 @@ jobs:
                 
             - name: Build
               run: |
-                cmake -H. -B build -DCMAKE_INSTALL_PREFIX=_install
+                rm -rf build
+                cmake -H. -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=_install
                 cmake --build build
